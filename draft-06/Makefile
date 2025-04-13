@@ -14,14 +14,17 @@ yanglint:
 	    yang/ietf-netconf-private-candidate@2024-09-12.yang \
 	    -o ietf-netconf-private-candidate.yanglint-tree
 
-tests: test-json
+tests: test1
 
-test-json:
+test1:
 	@yanglint \
 	   -p yang \
-	   -f xml \
+	   -F ietf-netconf-private-candidate:private-candidate \
+	   -t nc-rpc \
+	   yang/ietf-netconf@2011-06-01.yang \
 	   yang/ietf-netconf-private-candidate@2024-09-12.yang \
-	   data/instance-data.xml
+	   data/data1.xml \
+
 clean:
 	rm *-tree
 
